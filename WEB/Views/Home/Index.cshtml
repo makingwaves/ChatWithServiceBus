@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Send a message</h2>
+        <p>
+            @Html.TextArea("message", new { id = "txtMessage" })
+        </p>
+        <p>@Html.ActionLink("Send", "SendMessage", null, new { id = "linkSend", @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Messages Received</h2>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $('#linkSend').click(function () {
+            location.href = $(this).attr('href') + '?message=' + $('#txtMessage').val();
+            return false;
+        });
+    </script>
+}
